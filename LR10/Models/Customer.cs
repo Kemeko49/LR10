@@ -13,11 +13,11 @@ namespace LR10.Models
 
         [Required(ErrorMessage = "Бажана дата консультації обов'язкова!")]
         [FutureDate(ErrorMessage = "Бажана дата консультації має бути в майбутньому!")]
-        [NonWeekendDay(ErrorMessage = "Бажана дата консультації не може бути вихідним днем!")]
+        [NotWeekendDay(ErrorMessage = "Бажана дата консультації не може бути вихідним днем!")]
         public DateTime? ConsultationDate { get; set; }
 
         [Required(ErrorMessage = "Виберіть тему для консультації!")]
-        [ProductNotAllowedOnMonday(ErrorMessage = "Тема не може бути «Основи», якщо дата консультації - понеділок!")]
+        [NotMonday(ErrorMessage = "Тема не може бути «Основи», якщо дата консультації - понеділок!")]
         public string? Product { get; set; }
 
         public override string ToString()
@@ -35,7 +35,7 @@ namespace LR10.Models
         }
     }
 
-    public class NonWeekendDayAttribute : ValidationAttribute
+    public class NonWeekendAttribute : ValidationAttribute
     {
         public override bool IsValid(object value)
         {
@@ -44,7 +44,7 @@ namespace LR10.Models
         }
     }
 
-    public class ProductNotAllowedOnMondayAttribute : ValidationAttribute
+    public class NotMondayAttribute : ValidationAttribute
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
@@ -52,9 +52,12 @@ namespace LR10.Models
 
             if (customer.ConsultationDate.HasValue && customer.ConsultationDate.Value.DayOfWeek == DayOfWeek.Monday)
             {
+            
                 if (value != null && value.ToString().Equals("Основи", StringComparison.OrdinalIgnoreCase))
                 {
+                
                     return new ValidationResult("Тема не може бути «Основи», якщо дата консультації - понеділок");
+                    
                 }
             }
 
