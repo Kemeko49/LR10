@@ -1,0 +1,111 @@
+﻿@page
+@model LR10.Views.Registration.RegistrationModel
+
+<head>
+    <style>
+        * {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+   font-family: 'Roboto', sans-serif;
+}
+input {
+	height: 45px;
+	width: 100%;
+	color: #385983;
+	font-size: 14px;
+	line-height: 16px;
+	border: 2px solid #E9F2FF;
+	border-radius: 5px;
+	padding-left: 25px;
+}
+input:focus {
+	outline: none;
+	border:  2px solid #C1d9fd;
+}
+main{
+	background: #DCE8FD;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center; 
+	align-items: center;
+}
+.form-title {
+	color: #30507D;
+	font-weight: 300;
+	font-size: 28px;
+	line-height: 23px;
+	margin-bottom: 38px;
+	text-align: center;
+}
+
+.form-field{
+	margin-bottom: 13px;
+}
+.button{
+	width: 150px;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 45px;
+	display: block;
+	height: 45px;
+	background: #247FFF;
+	border-radius: 5px;
+	color: #fff;
+	text-transform: uppercase;
+	text-align: center;
+	margin-left: 100px;
+	cursor: pointer;
+}
+.form-buttons{
+	text-align: center;
+}
+a.button{
+	text-decoration: none;
+}
+label{
+	text-align:center;
+}
+    </style>
+</head>
+
+<body>
+<form method="post">
+    <div>
+		<p> 
+			<label type="form-title">Форма реєстрації</label><br />
+		</p>
+        <p>
+            <label for="initials">Прізвище, Ім'я</label><br />
+            <input type="text" id="initials" name="initials" />
+        </p>
+        <p>
+            <label for="email">Електронна адреса</label><br />
+            <input type="email" id="email" name="email" />
+        </p>
+        <p>
+            <label for="consultationDate">Дата консультації</label><br />
+            <input type="datetime-local" id="consultationDate" name="consultationDate" />
+        </p>
+        <p>
+            <label for="product">Оберіть тему бажаної консультації:</label>
+
+            <select id="product" name="product">
+                <option value="JavaScript">JavaScript</option>
+                <option value="C#">C#</option>
+                <option value="Java">Java</option>
+                <option value="Python">Python</option>
+                <option value="Основи">Основи</option>
+            </select>
+
+            <br><br>
+        </p>
+        <p>
+            <input type="submit" value="Відправити" />
+        </p>
+    </div>
+</form>
+</body>
